@@ -1,2 +1,2 @@
 # ecal
-Elliptical
+Elliptical calendar
