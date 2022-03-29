@@ -10,24 +10,16 @@ import { MessageService } from '../message.service';
 })
 export class EventsComponent implements OnInit {
 
-  selectedEvent?: Event;
-
   events: Event[] = [];
 
-  constructor(private eventService: EventService, private messageService: MessageService) {}
+  constructor(private heroService: EventService) { }
 
   ngOnInit(): void {
     this.getEvents();
   }
 
-  onSelect(event: Event): void {
-    this.selectedEvent = event;
-    this.messageService.add(`EventComponent: Selected event id=${event.id}`);
-  }
-
   getEvents(): void {
-    this.eventService.getEvents()
-        .subscribe(events => this.events = events);
+    this.heroService.getEvents()
+    .subscribe(events => this.events = events);
   }
-
 }
