@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Event } from '../event';
 import { EventService } from '../event.service';
-import { MessageService } from '../message.service';
+
 
 @Component({
   selector: 'app-events',
@@ -9,17 +10,16 @@ import { MessageService } from '../message.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-
   events: Event[] = [];
 
-  constructor(private heroService: EventService) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
     this.getEvents();
   }
 
   getEvents(): void {
-    this.heroService.getEvents()
+    this.eventService.getEvents()
     .subscribe(events => this.events = events);
   }
 }

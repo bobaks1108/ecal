@@ -5,7 +5,7 @@ import { EventService } from '../event.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
 
@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getEvents();
   }
+
   getEvents(): void {
     this.eventService.getEvents()
       .subscribe(events => this.events = events.slice(1, 5));

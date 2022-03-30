@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+
+import { Observable, of } from 'rxjs';
+
 import { Event } from './event';
 import { EVENTS } from './mock-events';
-import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 
 @Injectable({
