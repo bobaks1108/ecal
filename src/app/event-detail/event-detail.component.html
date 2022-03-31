@@ -2,8 +2,9 @@
     <h2>{{event.name | uppercase}} Details</h2>
     <div><span>id: </span>{{event.id}}</div>
     <div>
-      <label for="event-name">Event name: </label>
+      <label for="event-name">Event name : </label>
       <input id="event-name" [(ngModel)]="event.name" placeholder="name">
     </div>
+    <button type="button" (click)="save()">save</button>
     <button type="button" (click)="goBack()">go back</button>
 </div>
