@@ -22,4 +22,19 @@ export class EventsComponent implements OnInit {
     this.eventService.getEvents()
     .subscribe(events => this.events = events);
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.eventService.addEvent({ name } as Event)
+      .subscribe(event => {
+        this.events.push(event);
+      });
+  }
+
+  delete(event: Event): void {
+    this.events = this.events.filter(h => h !== event);
+    this.eventService.deleteEvent(event.id).subscribe();
+  }
+
 }

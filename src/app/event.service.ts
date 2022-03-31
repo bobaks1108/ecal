@@ -74,6 +74,24 @@ export class EventService {
       catchError(this.handleError<any>('updateEvent'))
     );
     
-}
+  }
+
+  /** POST: add a new event to the server */
+  addEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.eventsUrl, event, this.httpOptions).pipe(
+      tap((newEvent: Event) => this.log(`added event w/ id=${newEvent.id}`)),
+      catchError(this.handleError<Event>('addEvent'))
+    );
+  }
+
+  /** DELETE: delete the event from the server */
+  deleteEvent(id: number): Observable<Event> {
+    const url = `${this.eventsUrl}/${id}`;
+
+    return this.http.delete<Event>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted event id=${id}`)),
+      catchError(this.handleError<Event>('deleteEvent'))
+    );
+  }
 
 }
