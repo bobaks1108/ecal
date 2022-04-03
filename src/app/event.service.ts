@@ -94,4 +94,18 @@ export class EventService {
     );
   }
 
+  /* GET events whose name contains search term */
+searchEvents(term: string): Observable<Event[]> {
+  if (!term.trim()) {
+    // if not search term, return empty hero array.
+    return of([]);
+  }
+  return this.http.get<Event[]>(`${this.eventsUrl}/?name=${term}`).pipe(
+    tap(x => x.length ?
+       this.log(`found events matching "${term}"`) :
+       this.log(`no events matching "${term}"`)),
+    catchError(this.handleError<Event[]>('searchEvents', []))
+  );
+}
+
 }
