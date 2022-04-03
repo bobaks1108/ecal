@@ -8,10 +8,12 @@ import { Event } from './event';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const events = [
+      { id: 10, name: 'New Years Day' },
       { id: 11, name: 'Good Friday' },
       { id: 12, name: 'Easter Monday' },
       { id: 13, name: 'May Day' },
-      { id: 14, name: 'Jubilee' }
+      { id: 14, name: 'Jubilee' },
+      { id: 14, name: 'Late Summer BH' }
     ];
     return {events};
   }

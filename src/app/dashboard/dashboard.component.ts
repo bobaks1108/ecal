@@ -11,15 +11,17 @@ export class DashboardComponent implements OnInit {
 
   events: Event[] = [];
 
+  noOfTopEventsToShow = 5;
+
   constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.getEvents();
+    this.getTopEvents(this.noOfTopEventsToShow);
   }
 
-  getEvents(): void {
+  getTopEvents(noOfEvents: number): void {
     this.eventService.getEvents()
-      .subscribe(events => this.events = events.slice(1, 5));
+      .subscribe(events => this.events = events.slice(0, noOfEvents));
   }
 
 }
