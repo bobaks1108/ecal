@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { EventSearchComponent } from './event-search/event-search.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { ConfigElementDetailComponent } from './config-element-detail/config-element-detail.component';
 
 @NgModule({
   imports: [
@@ -33,7 +35,9 @@ import { EventSearchComponent } from './event-search/event-search.component';
     EventsComponent,
     EventDetailComponent,
     MessagesComponent,
-    EventSearchComponent
+    EventSearchComponent,
+    ConfigurationComponent,
+    ConfigElementDetailComponent
   ],
   bootstrap: [ AppComponent ],
   providers: []

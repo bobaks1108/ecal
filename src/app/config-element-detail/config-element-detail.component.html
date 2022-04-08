@@ -1,0 +1,10 @@
+<div *ngIf="configElement">
+
+    <h2>{{configElement.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{configElement.id}}</div>
+    <div>
+        <label for="configElement-name">Configuration element name: </label>
+        <input id="configElement-name" [(ngModel)]="configElement.name" placeholder="name">
+    </div>
+
+</div>
