@@ -34,4 +34,11 @@ export class ConfigElementDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    if (this.configElement) {
+      this.configElementService.updateConfigElement(this.configElement)
+        .subscribe(() => this.goBack());
+    }
+  }
+
 }

@@ -13,18 +13,32 @@ export class ConfigurationComponent implements OnInit {
   
   configuration: ConfigElement[] = [];
 
-  constructor(private ConfigElementService: ConfigElementService, private messageService: MessageService) {}
+  constructor(private configElementService: ConfigElementService, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.getConfiguration();
   }
 
   getConfiguration(): void {
-    this.ConfigElementService.getConfiguration()
+    this.configElementService.getConfiguration()
         .subscribe(configuration => this.configuration = configuration);
   }
 
   getType(configElement: ConfigElement) {
     return typeof configElement.value; 
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.configElementService.addConfigElement({ name } as ConfigElement)
+      .subscribe(configElement => {
+        this.configuration.push(configElement);
+      });
+  }
+
+  delete(configElement: ConfigElement): void {
+    this.configuration = this.configuration.filter(h => h !== configElement);
+    this.configElementService.deleteConfigElement(configElement.id).subscribe();
   }
 }

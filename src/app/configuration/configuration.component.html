@@ -1,51 +1,21 @@
 <h2>Configuration</h2>
 
+<div>
+  <label for="new-configElement">configElement name: </label>
+  <input id="new-configElement" #configElementName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(configElementName.value); configElementName.value=''">
+    Add configElement
+  </button>
+</div>
+
 <ul class="configuration">
     <li *ngFor="let configElement of configuration">
       <a routerLink="/config-element-detail/{{configElement.id}}">
             <span class="badge">{{configElement.id}}</span>
             <span class="name">{{configElement.name}}: {{configElement.value}}</span> 
       </a>
+      <button type="button" class="delete" title="delete configElement" (click)="delete(configElement)">x</button>
     </li>
 </ul>
-
-<!-- <app-config-element-detail [configElement]="selectedConfigElement"></app-config-element-detail> -->
-
-
-
-<!-- <h2>{{configElement.name}} Details</h2>
-<div><span>id: </span>{{configElement.id}}</div>
-<div><span>value: </span>{{configElement.value}}</div> -->
-
-
-<!-- <h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span>
-      <span class="name">{{hero.name}}</span>
-    </button>
-  </li>
-</ul>
-
-<div *ngIf="selectedHero">
-
-  <h2>{{selectedHero.name | uppercase}} Details</h2>
-  <div>id: {{selectedHero.id}}</div>
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-  </div>
-
-</div> -->
-
-
-<!-- <div>
-    <label for="name">configElement name: </label>
-    <input id="name" [(ngModel)]="configElement.name" placeholder="name">
-    <input id="value" [(ngModel)]="configElement.value" placeholder="value">
-  </div>
-
-  <div>
-    {{getType(configElement)}}
-  </div> -->

@@ -15,7 +15,11 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 14, name: 'Jubilee' },
       { id: 14, name: 'Late Summer BH' }
     ];
-    return {events};
+    let configuration = [
+      { id: 11, name: 'clockwise', value: true },
+      { id: 12, name: 'theme', value: 'light' }
+  ];
+    return {events, configuration};
   }
 
   // Overrides the genId method to ensure that a event always has an id.

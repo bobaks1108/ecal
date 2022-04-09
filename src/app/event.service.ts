@@ -97,7 +97,7 @@ export class EventService {
   /* GET events whose name contains search term */
 searchEvents(term: string): Observable<Event[]> {
   if (!term.trim()) {
-    // if not search term, return empty hero array.
+    // if not search term, return empty events array.
     return of([]);
   }
   return this.http.get<Event[]>(`${this.eventsUrl}/?name=${term}`).pipe(
