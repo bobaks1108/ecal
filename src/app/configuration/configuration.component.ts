@@ -10,8 +10,6 @@ import { MessageService } from '../message.service';
   styleUrls: ['./configuration.component.css']
 })
 export class ConfigurationComponent implements OnInit {
-
-  selectedConfigElement?: ConfigElement;
   
   configuration: ConfigElement[] = [];
 
@@ -19,11 +17,6 @@ export class ConfigurationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getConfiguration();
-  }
-
-  onSelect(configElement: ConfigElement): void {
-    this.selectedConfigElement = configElement;
-    this.messageService.add(`ConfigurationComponent: Selected configElement id=${configElement.id}`);
   }
 
   getConfiguration(): void {

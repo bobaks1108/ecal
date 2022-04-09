@@ -2,14 +2,14 @@
 
 <ul class="configuration">
     <li *ngFor="let configElement of configuration">
-        <button [class.selected]="configElement === selectedConfigElement" type="button" (click)="onSelect(configElement)">
+      <a routerLink="/config-element-detail/{{configElement.id}}">
             <span class="badge">{{configElement.id}}</span>
             <span class="name">{{configElement.name}}: {{configElement.value}}</span> 
-        </button>
+      </a>
     </li>
 </ul>
 
-<app-config-element-detail [configElement]="selectedConfigElement"></app-config-element-detail>
+<!-- <app-config-element-detail [configElement]="selectedConfigElement"></app-config-element-detail> -->
 
 
 

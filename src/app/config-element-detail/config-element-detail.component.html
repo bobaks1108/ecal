@@ -4,7 +4,8 @@
     <div><span>id: </span>{{configElement.id}}</div>
     <div>
         <label for="configElement-name">Configuration element name: </label>
-        <input id="configElement-name" [(ngModel)]="configElement.name" placeholder="name">
+        <input id="configElement-name" [(ngModel)]="configElement.name" placeholder="configElement name">
     </div>
+    <button type="button" (click)="goBack()">go back</button>
 
 </div>
