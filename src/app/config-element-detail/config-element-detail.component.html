@@ -1,12 +1,10 @@
 <div *ngIf="configElement">
-
     <h2>{{configElement.name | uppercase}} Details</h2>
     <div><span>id: </span>{{configElement.id}}</div>
     <div>
         <label for="configElement-name">Configuration element name: </label>
         <input id="configElement-name" [(ngModel)]="configElement.name" placeholder="configElement name">
     </div>
-    <button type="button" (click)="save()">save</button>
     <button type="button" (click)="goBack()">go back</button>
-
+    <button type="button" (click)="save()">save</button>
 </div>

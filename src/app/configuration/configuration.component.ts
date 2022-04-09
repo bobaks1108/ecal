@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { ConfigElement } from '../config-element';
 import { ConfigElementService } from '../config-element.service';
-import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-configuration',
@@ -13,7 +12,7 @@ export class ConfigurationComponent implements OnInit {
   
   configuration: ConfigElement[] = [];
 
-  constructor(private configElementService: ConfigElementService, private messageService: MessageService) {}
+  constructor(private configElementService: ConfigElementService) {}
 
   ngOnInit(): void {
     this.getConfiguration();
@@ -41,4 +40,5 @@ export class ConfigurationComponent implements OnInit {
     this.configuration = this.configuration.filter(h => h !== configElement);
     this.configElementService.deleteConfigElement(configElement.id).subscribe();
   }
+  
 }

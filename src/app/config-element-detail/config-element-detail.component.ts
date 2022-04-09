@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -25,7 +25,7 @@ export class ConfigElementDetailComponent implements OnInit {
   }
   
   getConfigElement(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.configElementService.getConfigElement(id)
       .subscribe(configElement => this.configElement = configElement);
   }
