@@ -15,6 +15,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { EventSearchComponent } from './event-search/event-search.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { ConfigElementDetailComponent } from './config-element-detail/config-element-detail.component';
+import { ConfigElementSearchComponent } from './config-element-search/config-element-search.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { ConfigElementDetailComponent } from './config-element-detail/config-ele
     MessagesComponent,
     EventSearchComponent,
     ConfigurationComponent,
-    ConfigElementDetailComponent
+    ConfigElementDetailComponent,
+    ConfigElementSearchComponent
   ],
   bootstrap: [ AppComponent ],
   providers: []

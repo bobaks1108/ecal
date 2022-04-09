@@ -90,4 +90,19 @@ export class ConfigElementService {
       catchError(this.handleError<ConfigElement>('deleteConfigElement'))
     );
   }
+
+  /* GET configuration whose name contains search term */
+  searchConfiguration(term: string): Observable<ConfigElement[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<ConfigElement[]>(`${this.configurationUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+      this.log(`found configuration matching "${term}"`) :
+      this.log(`no configuration matching "${term}"`)),
+      catchError(this.handleError<ConfigElement[]>('searchConfiguration', []))
+    );
+  }
+  
 }
