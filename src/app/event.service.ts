@@ -8,6 +8,7 @@ import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,11 @@ export class EventService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private eventsUrl = 'api/events';  // URL to web api
+
+ // private eventsUrl = 'api/events';  // URL to web api
+ // private eventsUrl = '/server/api/v1/events';  // URL to web api
+  private eventsUrl = '/server/api/events';  // URL to web api
+  
 
   /**
   * Handle Http operation that failed.
@@ -68,10 +73,11 @@ export class EventService {
   }
 
   /** PUT: update the event on the server */
-  updateEvent(event: Event): Observable<any> {
-    return this.http.put(this.eventsUrl, event, this.httpOptions).pipe(
-      tap(_ => this.log(`updated event id=${event.id}`)),
-      catchError(this.handleError<any>('updateEvent'))
+  updateEvent(event: Event): Observable<Event> {
+    const url = `${this.eventsUrl}/${event.id}`;
+    return this.http.put<Event>(url, event, this.httpOptions).pipe(
+      tap((event: Event) => this.log(`updated event w/ id=${event.id}`)),
+      catchError(this.handleError<Event>('updateEvent'))
     );
     
   }
@@ -79,7 +85,7 @@ export class EventService {
   /** POST: add a new event to the server */
   addEvent(event: Event): Observable<Event> {
     return this.http.post<Event>(this.eventsUrl, event, this.httpOptions).pipe(
-      tap((newEvent: Event) => this.log(`added event w/ id=${newEvent.id}`)),
+      tap((event: Event) => this.log(`added event w/ id=${event.id}`)),
       catchError(this.handleError<Event>('addEvent'))
     );
   }
@@ -95,17 +101,17 @@ export class EventService {
   }
 
   /* GET events whose name contains search term */
-searchEvents(term: string): Observable<Event[]> {
-  if (!term.trim()) {
-    // if not search term, return empty events array.
-    return of([]);
+  searchEvents(term: string): Observable<Event[]> {
+    if (!term.trim()) {
+      // if not search term, return empty events array.
+      return of([]);
+    }
+    return this.http.get<Event[]>(`${this.eventsUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found events matching "${term}"`) :
+        this.log(`no events matching "${term}"`)),
+      catchError(this.handleError<Event[]>('searchEvents', []))
+    );
   }
-  return this.http.get<Event[]>(`${this.eventsUrl}/?name=${term}`).pipe(
-    tap(x => x.length ?
-       this.log(`found events matching "${term}"`) :
-       this.log(`no events matching "${term}"`)),
-    catchError(this.handleError<Event[]>('searchEvents', []))
-  );
-}
 
 }

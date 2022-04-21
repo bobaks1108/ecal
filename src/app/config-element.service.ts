@@ -44,15 +44,15 @@ export class ConfigElementService {
       );
   }
 
-    /** GET ConfigElement by id. Will 404 if id not found */
-    getConfigElement(id: number): Observable<ConfigElement> {
-      const url = `${this.configurationUrl}/${id}`;
-      return this.http.get<ConfigElement>(url).pipe(
-        tap(_ => this.log(`fetched configElement id=${id}`)),
-        catchError(this.handleError<ConfigElement>(`getConfigElement id=${id}`))
-      );
+  /** GET ConfigElement by id. Will 404 if id not found */
+  getConfigElement(id: number): Observable<ConfigElement> {
+    const url = `${this.configurationUrl}/${id}`;
+    return this.http.get<ConfigElement>(url).pipe(
+      tap(_ => this.log(`fetched configElement id=${id}`)),
+      catchError(this.handleError<ConfigElement>(`getConfigElement id=${id}`))
+    );
   }
-
+  
   /* GET configuration whose name contains search term */
   searchConfiguration(term: string): Observable<ConfigElement[]> {
     if (!term.trim()) {
