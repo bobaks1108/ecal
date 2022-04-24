@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService } from './in-memory-data.service';
+import { EventService } from './event.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,9 +30,9 @@ import { ConfigElementSearchComponent } from './config-element-search/config-ele
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
   declarations: [
     AppComponent,
@@ -45,6 +46,6 @@ import { ConfigElementSearchComponent } from './config-element-search/config-ele
     ConfigElementSearchComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: []
+  providers: [ EventService ]
 })
 export class AppModule { }

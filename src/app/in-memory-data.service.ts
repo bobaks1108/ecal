@@ -17,7 +17,8 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
     let configuration = [
       { id: 11, name: 'clockwise', value: true },
-      { id: 12, name: 'theme', value: 'light' }
+      { id: 12, name: 'theme', value: 'light' },
+      { id: 13, name: 'number_of_top_events', value: 5 }
   ];
     return {events, configuration};
   }

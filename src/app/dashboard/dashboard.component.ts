@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../event';
 import { EventService } from '../event.service';
+import { ConfigElement } from '../config-element';
+import { ConfigElementService } from '../config-element.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   events: Event[] = [];
 
-  noOfTopEventsToShow = 5;
+  noOfTopEventsToShow = this.getNoOfTopEventsToShow();
 
   constructor(private eventService: EventService) { }
 
@@ -22,6 +24,10 @@ export class DashboardComponent implements OnInit {
   getTopEvents(noOfEvents: number): void {
     this.eventService.getEvents()
       .subscribe(events => this.events = events.slice(0, noOfEvents));
+  }
+
+  getNoOfTopEventsToShow(): number {
+    return 5; // get this deom configuration number_of_top_events
   }
 
 }
