@@ -16,9 +16,6 @@ import { EventsComponent } from './events/events.component';
 import { EventSearchComponent } from './event-search/event-search.component';
 import { MessagesComponent } from './messages/messages.component';
 
-import { ConfigurationComponent } from './configuration/configuration.component';
-import { ConfigElementDetailComponent } from './config-element-detail/config-element-detail.component';
-import { ConfigElementSearchComponent } from './config-element-search/config-element-search.component';
 
 @NgModule({
   imports: [
@@ -40,10 +37,7 @@ import { ConfigElementSearchComponent } from './config-element-search/config-ele
     EventsComponent,
     EventDetailComponent,
     MessagesComponent,
-    EventSearchComponent,
-    ConfigurationComponent,
-    ConfigElementDetailComponent,
-    ConfigElementSearchComponent
+    EventSearchComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [ EventService ]

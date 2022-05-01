@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../event';
 import { EventService } from '../event.service';
-import { ConfigElement } from '../config-element';
-import { ConfigElementService } from '../config-element.service';
 
 @Component({
   selector: 'app-dashboard',
