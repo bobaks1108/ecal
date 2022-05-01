@@ -3,11 +3,11 @@ import { Event } from '../event';
 import { EventService } from '../event.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.css' ]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: [ './home.component.css' ]
 })
-export class DashboardComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   events: Event[] = [];
 

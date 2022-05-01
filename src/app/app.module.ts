@@ -10,7 +10,7 @@ import { EventService } from './event.service';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsComponent } from './events/events.component';
 import { EventSearchComponent } from './event-search/event-search.component';
@@ -33,7 +33,7 @@ import { MessagesComponent } from './messages/messages.component';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
+    HomeComponent,
     EventsComponent,
     EventDetailComponent,
     MessagesComponent,
