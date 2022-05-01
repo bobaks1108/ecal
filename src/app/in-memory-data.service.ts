@@ -7,13 +7,11 @@ import { Event } from './event';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const events = [
-      { id: 10, name: 'New Years Day' },
-      { id: 11, name: 'Good Friday' },
-      { id: 12, name: 'Easter Monday' },
-      { id: 13, name: 'May Day' },
-      { id: 14, name: 'Jubilee' },
-      { id: 14, name: 'Late Summer BH' }
+    let events = [
+      { id: 10, name: 'New Years Day', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
+      { id: 11, name: 'Event2', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
+      { id: 12, name: 'Event3', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
+      { id: 13, name: 'Event4', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
     ];
     let configuration = [
       { id: 11, name: 'clockwise', value: true },
@@ -32,3 +30,10 @@ export class InMemoryDataService implements InMemoryDbService {
     return events.length > 0 ? Math.max(...events.map(event => event.id)) + 1 : 11;
   }
 }
+
+// "id": 2,
+// "name": "April Fools Day",
+// "startDate": "2022-04-01 00:00:00",
+// "endDate": "2022-04-01 23:59:59"
+
+//[{"id":12,"name":"asdasasdasd","startDate":"2022-03-31 23:00:00","endDate":"2022-03-31 23:00:00"},{"id":35,"name":"676686786","startDate":"2022-03-31 23:00:00","endDate":"2022-03-31 23:00:00"}]
