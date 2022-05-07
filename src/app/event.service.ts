@@ -102,7 +102,7 @@ export class EventService {
       // if not search term, return empty events array.
       return of([]);
     }
-    return this.http.get<Event[]>(`${this.eventsUrl}/?name=${term}`).pipe(
+    return this.http.get<Event[]>(`${this.eventsUrl}/search?name=${term}`).pipe(
       tap(x => x.length ?
         this.log(`found events matching "${term}"`) :
         this.log(`no events matching "${term}"`)),
