@@ -60,6 +60,15 @@ export class EventService {
       );
   }
 
+  /** GET next x days (upcoming) events from the server */
+  getUpcomingEvents(noOfDays: number): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.eventsUrl}/upcoming?noOfDays=${noOfDays}`)
+      .pipe(
+        tap(_ => this.log('fetched events')),
+        catchError(this.handleError<Event[]>('getEvents', []))
+      );
+  }
+
   /** GET event by id. Will 404 if id not found */
   getEvent(id: number): Observable<Event> {
     const url = `${this.eventsUrl}/${id}`;

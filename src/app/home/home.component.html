@@ -1,4 +1,4 @@
-<h2>Top {{noOfTopEventsToShow}} Events</h2>
+<h2>Upcoming Events (in next {{noOfDaysForUpcomingEvents}} days)</h2>
 <div class="events-menu">
     <a *ngFor="let event of events"
     routerLink="/detail/{{event.id}}">

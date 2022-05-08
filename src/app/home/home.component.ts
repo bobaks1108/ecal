@@ -11,21 +11,21 @@ export class HomeComponent implements OnInit {
 
   events: Event[] = [];
 
-  noOfTopEventsToShow = this.getNoOfTopEventsToShow();
+  noOfDaysForUpcomingEvents = this.getNoOfDaysForUpcomingEvents();
 
   constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.getTopEvents(this.noOfTopEventsToShow);
+    this.getUpcomingEvents(this.noOfDaysForUpcomingEvents);
   }
 
-  getTopEvents(noOfEvents: number): void {
-    this.eventService.getEvents()
-      .subscribe(events => this.events = events.slice(0, noOfEvents));
+  getUpcomingEvents(noOfEvents: number): void {
+    this.eventService.getUpcomingEvents(noOfEvents)
+      .subscribe(events => this.events = events);
   }
 
-  getNoOfTopEventsToShow(): number {
-    return 5; // get this deom configuration number_of_top_events
+  getNoOfDaysForUpcomingEvents(): number {
+    return 28; // get this from configuration number_of_top_events
   }
 
 }
