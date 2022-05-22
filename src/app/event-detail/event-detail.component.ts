@@ -14,6 +14,8 @@ export class EventDetailComponent implements OnInit {
 
   event: Event | undefined;
 
+  events: Event[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService,
@@ -40,4 +42,14 @@ export class EventDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.eventService.addEvent({ name } as Event)
+      .subscribe(event => {
+        this.events.push(event);
+      });
+  }
+
 }

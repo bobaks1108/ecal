@@ -8,3 +8,16 @@
     <button type="button" (click)="save()">save</button>
     <button type="button" (click)="goBack()">go back</button>
 </div>
+<div *ngIf="!event">
+  <h2>Add event:</h2>
+  <div>
+    <label for="new-event">Event name: </label>
+    <input id="new-event" #eventName />
+  </div>
+  
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(eventName.value); eventName.value=''">
+      Add event
+  </button>
+  <button type="button" (click)="goBack()">go back</button>
+</div>
