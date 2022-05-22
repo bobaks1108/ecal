@@ -1,8 +1,7 @@
 import { Event } from './event';
 
+let date: Date = new Date("2022-01-01");  
+
 export const EVENTS: Event[] = [
-  { id: 11, name: 'Good Friday' },
-  { id: 12, name: 'Easter Monday' },
-  { id: 13, name: 'May Day' },
-  { id: 14, name: 'Jubilee' }
+  { id: 11, name: 'New Years Day', startDate: date, endDate: date },
 ];
