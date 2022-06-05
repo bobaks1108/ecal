@@ -1,0 +1,36 @@
+<!-- <h2>Add or Edit {{event.name | uppercase}} Details</h2> -->
+<h2>{{pageTitle}}</h2>
+
+<form novalidate [formGroup]="eventForm">
+    <mat-form-field>
+
+        <input matInput type="text" name="name" 
+         id="name"
+         placeholder="Enter event name" 
+         formControlName="name" >
+
+        <button type="submit" (click)="saveEvent()">save</button>
+        <button type="button" (click)="goBack()">go back</button>
+        <button type="button" (click)="populateTestData()">Test data</button>
+
+    </mat-form-field>
+
+</form>
+
+<div class="alert alert-danger"
+*ngIf="errorMessage">{{errorMessage}}
+</div>
+
+
+<div class="form-val">
+
+  {{eventForm.value | json }}
+
+</div>
+
+
+<div class="form-val">
+
+    {{eventForm.valid}}
+  
+  </div>

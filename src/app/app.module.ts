@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -15,6 +15,14 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsComponent } from './events/events.component';
 import { EventSearchComponent } from './event-search/event-search.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AddEditEventComponent } from './add-edit-event/add-edit-event.component';
+
+// material imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatInputModule} from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core' 
+
 
 
 @NgModule({
@@ -23,6 +31,11 @@ import { MessagesComponent } from './messages/messages.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -37,7 +50,9 @@ import { MessagesComponent } from './messages/messages.component';
     EventsComponent,
     EventDetailComponent,
     MessagesComponent,
-    EventSearchComponent
+    EventSearchComponent,
+    AddEditEventComponent
+    
   ],
   bootstrap: [ AppComponent ],
   providers: [ EventService ]
