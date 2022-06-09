@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { Event } from '../event';
 import { EventService } from '../event.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 
@@ -31,7 +31,7 @@ export class AddEditEventComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
-      name: ''
+      name: ['', [Validators.required, Validators.maxLength(25)]]
     })
 
     this.sub = this.route.paramMap.subscribe(

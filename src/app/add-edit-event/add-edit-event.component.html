@@ -2,35 +2,74 @@
 <h2>{{pageTitle}}</h2>
 
 <form novalidate [formGroup]="eventForm">
+  <div>
     <mat-form-field>
 
         <input matInput type="text" name="name" 
          id="name"
          placeholder="Enter event name" 
-         formControlName="name" >
+         formControlName="name" />
+         <mat-error  *ngIf="eventForm.get('name')!.errors?.['required']">
+           Name is required!
+         </mat-error>
+         <mat-error  *ngIf="eventForm.get('name')!.errors?.['maxlength']">
+          Name too long!
+        </mat-error>
 
+
+      </mat-form-field>
+    </div>
         <button type="submit" (click)="saveEvent()">save</button>
         <button type="button" (click)="goBack()">go back</button>
         <button type="button" (click)="populateTestData()">Test data</button>
 
-    </mat-form-field>
 
 </form>
+
 
 <div class="alert alert-danger"
 *ngIf="errorMessage">{{errorMessage}}
 </div>
 
-
+<hr />
+eventForm.get('name')!.errors | json
+<div>{{eventForm.get('name')!.errors | json}}</div>
+<hr />
+eventForm.get('name')!.errors?.['maxlength'] != null  (lowercase l!!!!!)
+<div>{{eventForm.get('name')!.errors?.['maxlength'] != null}}</div>
+<hr />
+eventForm.get('name')!.errors?.['required']
+<div>{{eventForm.get('name')!.errors?.['required']}}</div>
+<hr />
+eventForm.value  | json:
 <div class="form-val">
-
   {{eventForm.value | json }}
-
 </div>
-
-
+<hr />
 <div class="form-val">
-
-    {{eventForm.valid}}
-  
-  </div>
+valid: {{eventForm.valid}} 
+<div>This property returns true if the elements contents are valid and false otherwise.</div>
+</div>
+<hr />
+invalid:  {{eventForm.invalid}} 
+<div>This property returns true if the elements contents are invalid and false otherwise.</div>
+<div class="form-val">
+  <hr />
+pristine: {{eventForm.pristine}} 
+<div>This property returns true if the elements contents have not been changed.</div>
+</div>
+<div class="form-val">
+  <hr />
+dirty: {{eventForm.dirty}} 
+<div>This property returns true if the elements contents have been changed.</div>
+</div>
+<div class="form-val">
+  <hr />
+untouched:  {{eventForm.untouched}}
+<div>This property returns true if the user has not visited the element.</div>
+</div>
+<div class="form-val">
+  <hr />
+touched:  {{eventForm.touched}} 
+<div>This property returns true if the user has visited the element.</div>
+</div>
