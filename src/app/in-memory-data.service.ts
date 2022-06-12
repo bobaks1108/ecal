@@ -8,15 +8,15 @@ import { Event } from './event';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let events = [
-      { id: 10, name: 'New Years Day', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
-      { id: 11, name: 'Event2', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
-      { id: 12, name: 'Event3', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
-      { id: 13, name: 'Event4', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
+      { id: 10, eventName: 'New Years Day', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
+      { id: 11, eventName: 'Event2', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
+      { id: 12, eventName: 'Event3', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
+      { id: 13, eventName: 'Event4', startDate: '2022-04-01 00:00:00', endDate: '2022-04-02 00:00:00' },
     ];
     let configuration = [
-      { id: 11, name: 'clockwise', value: true },
-      { id: 12, name: 'theme', value: 'light' },
-      { id: 13, name: 'number_of_top_events', value: 5 }
+      { id: 11, eventName: 'clockwise', value: true },
+      { id: 12, eventName: 'theme', value: 'light' },
+      { id: 13, eventName: 'number_of_top_events', value: 5 }
   ];
     return {events, configuration};
   }
@@ -32,8 +32,8 @@ export class InMemoryDataService implements InMemoryDbService {
 }
 
 // "id": 2,
-// "name": "April Fools Day",
+// "eventName": "April Fools Day",
 // "startDate": "2022-04-01 00:00:00",
 // "endDate": "2022-04-01 23:59:59"
 
-//[{"id":12,"name":"asdasasdasd","startDate":"2022-03-31 23:00:00","endDate":"2022-03-31 23:00:00"},{"id":35,"name":"676686786","startDate":"2022-03-31 23:00:00","endDate":"2022-03-31 23:00:00"}]
+//[{"id":12,"eventName":"asdasasdasd","startDate":"2022-03-31 23:00:00","endDate":"2022-03-31 23:00:00"},{"id":35,"eventName":"676686786","startDate":"2022-03-31 23:00:00","endDate":"2022-03-31 23:00:00"}]

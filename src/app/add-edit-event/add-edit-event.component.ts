@@ -44,7 +44,7 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
       // Defines all of the validation messages for the form.
     // These could instead be retrieved from a file or database.
     this.validationMessages = {
-      name: {
+      eventName: {
         required: 'Event name is required.',
         maxlength: 'Event name cannot exceed 50 characters.'
       }
@@ -57,11 +57,11 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
-      name: ['', [Validators.required, Validators.maxLength(25)]]
+      eventName: ['', [Validators.required, Validators.maxLength(25)]]
     })
 
     // every time the name is changed
-    const nameControl = this.eventForm.get('name');
+    const nameControl = this.eventForm.get('eventName');
 
 
 
@@ -119,18 +119,18 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.event.id === 0) {
       this.pageTitle = 'Add Event';
     } else {
-      this.pageTitle = `Edit Event: ${this.event.name}`;
+      this.pageTitle = `Edit Event: ${this.event.eventName}`;
     }
 
     // Update the data on the form
     this.eventForm.patchValue({
-      name: this.event.name
+      eventName: this.event.eventName
     });
   }
 
   populateTestData(): void {
     this.eventForm?.patchValue({
-      name: 'testname'
+      eventName: 'testname'
     })
   }
 
