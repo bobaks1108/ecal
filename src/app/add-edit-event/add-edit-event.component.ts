@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Event } from '../event';
 import { EventService } from '../event.service';
 import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { debounceTime, fromEvent, merge, Observable, Subscription } from 'rxjs';
+import { GenericValidator } from '../shared/generic-validator';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { Subscription } from 'rxjs';
   templateUrl: './add-edit-event.component.html',
   styleUrls: ['./add-edit-event.component.sass']
 })
-export class AddEditEventComponent implements OnInit {
+export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[] = [];
 
   eventForm: FormGroup = new FormGroup({});
   private sub: Subscription = new Subscription;
@@ -21,18 +23,47 @@ export class AddEditEventComponent implements OnInit {
   errorMessage: String = '';
   event: Event | undefined;
 
+  // Use with the generic validation message class
+  displayMessage: { [key: string]: string } = {};
+  private validationMessages: { [key: string]: { [key: string]: string } };
+  private genericValidator: GenericValidator;
+
+  // private validationMessages = {
+  //   required: 'Please enter an event name.',
+  //   eventToLong: 'Event name too long'
+  // }
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private eventService: EventService,
     private location: Location,
     private fb: FormBuilder
-  ) {}
+  ) {
+
+      // Defines all of the validation messages for the form.
+    // These could instead be retrieved from a file or database.
+    this.validationMessages = {
+      name: {
+        required: 'Event name is required.',
+        maxlength: 'Event name cannot exceed 50 characters.'
+      }
+    };
+
+    // Define an instance of the validator for use with this form,
+    // passing in this form's set of validation messages.
+    this.genericValidator = new GenericValidator(this.validationMessages);
+  }
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(25)]]
     })
+
+    // every time the name is changed
+    const nameControl = this.eventForm.get('name');
+
+
 
     this.sub = this.route.paramMap.subscribe(
       params => {
@@ -44,6 +75,23 @@ export class AddEditEventComponent implements OnInit {
         this.getEvent(id);
       }
     )
+
+
+  }
+
+  ngAfterViewInit(): void {
+    // Watch for the blur event from any input element on the form.
+    // This is required because the valueChanges does not provide notification on blur
+    const controlBlurs: Observable<any>[] = this.formInputElements
+      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+
+    // Merge the blur event observable with the valueChanges observable
+    // so we only need to subscribe once.
+    merge(this.eventForm.valueChanges, ...controlBlurs).pipe(
+      debounceTime(200)
+    ).subscribe(value => {
+      this.displayMessage = this.genericValidator.processMessages(this.eventForm);
+    });
   }
 
   goBack(): void {

@@ -9,13 +9,9 @@
          id="name"
          placeholder="Enter event name" 
          formControlName="name" />
-         <mat-error  *ngIf="eventForm.get('name')!.errors?.['required']">
-           Name is required!
+         <mat-error>
+          {{displayMessage.name}}
          </mat-error>
-         <mat-error  *ngIf="eventForm.get('name')!.errors?.['maxlength']">
-          Name too long!
-        </mat-error>
-
 
       </mat-form-field>
     </div>
