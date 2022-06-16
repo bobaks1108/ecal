@@ -14,6 +14,15 @@
         </mat-error>
 
     </mat-form-field>
+
+  </div>
+  <div>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="startDate" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
     
   </div>
 
