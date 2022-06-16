@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { Event } from '../event';
 import { EventService } from '../event.service';
-import { FormGroup, FormBuilder, Validators, FormControlName } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, FormControlName } from '@angular/forms';
 import { debounceTime, fromEvent, merge, Observable, Subscription } from 'rxjs';
 import { GenericValidator } from '../shared/generic-validator';
 
@@ -17,7 +17,7 @@ import { GenericValidator } from '../shared/generic-validator';
 export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[] = [];
 
-  eventForm: FormGroup = new FormGroup({});
+  eventForm: UntypedFormGroup = new UntypedFormGroup({});
   private sub: Subscription = new Subscription;
   pageTitle = 'Event edit';  
   errorMessage: String = '';
@@ -38,7 +38,7 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     private eventService: EventService,
     private location: Location,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
 
       // Defines all of the validation messages for the form.
