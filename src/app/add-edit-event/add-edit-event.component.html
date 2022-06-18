@@ -19,7 +19,7 @@
   <div>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="startDate" placeholder="Choose a date">
+      <input matInput [matDatepicker]="startDate" placeholder="Choose a date" formControlName="startDate">
       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
       <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>

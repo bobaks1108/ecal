@@ -19,7 +19,7 @@ import { AddEditEventComponent } from './add-edit-event/add-edit-event.component
 
 // material imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule } from '@angular/material/core' 
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core' 
 import { AngularMaterialModule } from './angular-material.module';
 
 
@@ -53,7 +53,7 @@ import { AngularMaterialModule } from './angular-material.module';
     
   ],
   bootstrap: [ AppComponent ],
-  providers: [ EventService ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [ EventService, {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

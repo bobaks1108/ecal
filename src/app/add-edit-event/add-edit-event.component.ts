@@ -7,6 +7,8 @@ import { EventService } from '../event.service';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, FormControlName } from '@angular/forms';
 import { debounceTime, fromEvent, merge, Observable, Subscription } from 'rxjs';
 import { GenericValidator } from '../shared/generic-validator';
+import { DatePipe } from '@angular/common';
+
 
 
 @Component({
@@ -27,18 +29,14 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
   displayMessage: { [key: string]: string } = {};
   private validationMessages: { [key: string]: { [key: string]: string } };
   private genericValidator: GenericValidator;
-
-  // private validationMessages = {
-  //   required: 'Please enter an event name.',
-  //   eventToLong: 'Event name too long'
-  // }
+  private pipe = new DatePipe('en-GB');
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private eventService: EventService,
     private location: Location,
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
   ) {
 
       // Defines all of the validation messages for the form.
@@ -57,17 +55,18 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
-      eventName: ['', [Validators.required, Validators.maxLength(25)]]
+      eventName: ['', [Validators.required, Validators.maxLength(25)]],
+      startDate: ['']
     })
 
     // every time the name is changed
     const nameControl = this.eventForm.get('eventName');
-
+    const startDate = this.eventForm.get('startDate');
 
 
     this.sub = this.route.paramMap.subscribe(
       params => {
-        // + converts to number 
+        // + sign converts to number 
         // The ! is the non-null assertion operator. 
         // You are telling typescript "i know this looks like it might be null/undefined, but trust me,
         // it's not"
@@ -124,7 +123,8 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Update the data on the form
     this.eventForm.patchValue({
-      eventName: this.event.eventName
+      eventName: this.event.eventName,
+      startDate: this.event.startDate
     });
   }
 
@@ -137,6 +137,9 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
 
   saveEvent(): void {
     if (this.eventForm.valid) {
+  
+      this.eventForm.value.startDate = this.pipe.transform(this.eventForm.value.startDate, "yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+
       if (this.eventForm.dirty) {
         const p = { ...this.event, ...this.eventForm.value };
 
@@ -166,11 +169,6 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.navigate(['/events']);
   }
 
-  /// TODO Convert to reactive form - update works -fix add 
-
-  save(): void {
-    
-  }
 
 
 }
