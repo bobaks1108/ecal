@@ -8,6 +8,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators, FormControlName } fro
 import { debounceTime, fromEvent, merge, Observable, Subscription } from 'rxjs';
 import { GenericValidator } from '../shared/generic-validator';
 import { DatePipe } from '@angular/common';
+import { CustomValidators } from '../app.validators';
 
 
 
@@ -45,6 +46,9 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
       eventName: {
         required: 'Event name is required.',
         maxlength: 'Event name cannot exceed 50 characters.'
+      },
+      startDate: {
+        matDatepickerParse: 'Event start date is required.'
       }
     };
 
@@ -56,7 +60,7 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.eventForm = this.fb.group({
       eventName: ['', [Validators.required, Validators.maxLength(25)]],
-      startDate: ['']
+      startDate: ['', [CustomValidators.startDateValidator]]
     })
 
     // every time the name is changed

@@ -19,7 +19,11 @@
   <div>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="startDate" placeholder="Choose a date" formControlName="startDate">
+      <input matInput [matDatepicker]="startDate" placeholder="Choose a date" formControlName="startDate" name="startDate" 
+      id="startDate" />
+      <mat-error>
+        {{displayMessage.startDate}}
+      </mat-error>
       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
       <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
@@ -56,7 +60,37 @@ eventForm.get('eventName')!.errors?.['maxlength'] != null  (lowercase l!!!!!)
 <hr />
 eventForm.get('eventName')!.errors?.['required']
 <div>{{eventForm.get('eventName')!.errors?.['required']}}</div>
+
 <hr />
+eventForm.get('startDate')!.errors | json
+<div>{{eventForm.get('startDate')!.errors | json}}</div>
+<hr />
+eventForm.get('startDate')!.errors?.['required']
+<div>{{eventForm.get('startDate')!.errors?.['required']}}</div>
+<hr />
+eventForm.get('startDate')!.invalid | json
+<div>{{eventForm.get('startDate')!.invalid | json}}</div>
+<hr />
+eventForm.get('startDate')!.touched | json
+<div>{{eventForm.get('startDate')!.touched | json}}</div>
+<hr />
+eventForm.get('startDate')!.hasError('requiredStartDate') | json
+<div>{{eventForm.get('startDate')!.hasError('requiredStartDate') | json}}</div>
+<hr />
+eventForm.get('startDate')!.hasError | json
+<div>{{eventForm.get('startDate')!.hasError | json}}</div>
+<hr />
+eventForm.get('startDate')
+<div>{{eventForm.get('startDate')}}</div>
+<hr />
+<hr />
+
+
+displayMessage | json
+<div>{{displayMessage | json}}</div>
+<hr />
+
+
 eventForm.value  | json:
 <div class="form-val">
   {{eventForm.value | json }}
