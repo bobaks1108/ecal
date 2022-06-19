@@ -12,5 +12,15 @@ export class CustomValidators extends Validators{
   
   }
 
+  static endDateValidator(fdValue: FormControl) {
+    const date = fdValue.value;
+    if (date ===null || date==='' || date==='Invalid Date') { 
+      return { endDateValidator: true } 
+    } else {
+      return { }
+    };
+  
+  }
+
 
 }
