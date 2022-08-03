@@ -158,19 +158,6 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
       this.eventForm.value.startDate = this.pipe.transform(this.eventForm.value.startDate, "yyyy-MM-dd'T'HH:mm:ssZZZZZ");
       this.eventForm.value.endDate = this.pipe.transform(this.eventForm.value.endDate, "yyyy-MM-dd'T'HH:mm:ssZZZZZ");
 
-      console.log(this.eventForm.value.startDate);
-
-      // dates are added to db as BST i.e previous day and 2300 hrs
-      // doesnt work to add offset just concaternates milliseconds 360000 and breaks it :-(
-      // if (this.offset <= 0) {                             
-      //   this.eventForm.value.startDate  = this.eventForm.value.startDate  + (Math.abs(this.offset * 60000));
-      //   this.eventForm.value.endDate = this.eventForm.value.endDate  + (Math.abs(this.offset * 60000));
-      // } else {
-      //   this.eventForm.value.startDate = this.eventForm.value.startDate + (-Math.abs(this.offset * 60000));
-      //   this.eventForm.value.endDate = this.eventForm.value.endDate + (-Math.abs(this.offset * 60000));
-      // }
-
-
       if (this.eventForm.dirty) {
         const p = { ...this.event, ...this.eventForm.value };
 

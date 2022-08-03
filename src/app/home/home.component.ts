@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   getNoOfDaysForUpcomingEvents(): number {
-    return 28; // get this from configuration number_of_top_events
+    return 28; // to do get this from configuration number_of_top_events
   }
 
 }
