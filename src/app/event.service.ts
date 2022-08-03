@@ -7,6 +7,7 @@ import { EVENTS } from './mock-events';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,10 @@ export class EventService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  private eventsUrl: string = environment.backend.eventsUrl;
 
-  //private eventsUrl = 'api/events';  // URL to web api
-  private eventsUrl = '/server/api/events'; // URL to web api
+  //private eventsUrl = '/server/api/events';  // URL to web api
+  //private eventsUrl = 'http://ecalapp-env.eba-pmjqqcen.eu-west-2.elasticbeanstalk.com/server/api/events'; // URL to web api
 
   /**
   * Handle Http operation that failed.
