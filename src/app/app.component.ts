@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EliptiCal calendar';
+  versionNo = '0.0.1 (test)';
 }

@@ -20,3 +20,8 @@ h1 {
   nav a.active {
     background-color: black;
   }
+
+  .versionNo {
+    margin-top: 20px;
+    font-size: 10px;
+  }
