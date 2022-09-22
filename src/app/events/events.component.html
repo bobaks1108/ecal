@@ -1,13 +1,4 @@
 <h2>Events</h2>
-<div>
-    <label for="new-event">Event name: </label>
-    <input id="new-event" #eventName />
-
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button type="button" class="add-button" (click)="add(eventName.value); eventName.value=''">
-        Add event
-    </button>
-</div>
 <ul class="events">
     <li *ngFor="let event of events">
       <a routerLink="/detail/{{event.id}}">
