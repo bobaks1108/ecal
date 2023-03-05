@@ -2,6 +2,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
+### Node.js
+
+Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast, scalable network applications.
+
+Any of the following options will get Node.js installed for you:
+
+* Visit [Node.js](http://nodejs.org/) and click on the *install* link to download Node.js
+* If your a Mac user and have [Homebrew](http://brew.sh) installed `brew install node`
+## To run
+
+If first time:
+
+```npm install```
+
+Then
+
+```npm start```
+
+To test - with backend running. Go to:
+
+```http://localhost:4200/events```
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
