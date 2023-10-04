@@ -155,8 +155,8 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
 
       console.log(this.eventForm.value.startDate);
 
-      this.eventForm.value.startDate = this.pipe.transform(this.eventForm.value.startDate, "yyyy-MM-dd'T'HH:mm:ssZZZZZ");
-      this.eventForm.value.endDate = this.pipe.transform(this.eventForm.value.endDate, "yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+      this.eventForm.value.startDate = this.pipe.transform(this.eventForm.value.startDate, "yyyy-MM-dd");
+      this.eventForm.value.endDate = this.pipe.transform(this.eventForm.value.endDate, "yyyy-MM-dd");
 
       if (this.eventForm.dirty) {
         const p = { ...this.event, ...this.eventForm.value };
