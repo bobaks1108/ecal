@@ -1,10 +1,9 @@
 <h1>{{title}}</h1>
 <nav>
-  <a routerLink="/home">Home</a>
-  <a routerLink="/events">Events</a>
-  <a routerLink="/detail">
-    Add Event
-  </a>
+  <a routerLink="/home" routerLinkActive="active">Home</a>
+  <a routerLink="/events" routerLinkActive="active">Events</a>
+  <a routerLink="/add-edit-event" routerLinkActive="active">Add Event</a>
+  <a routerLink="/graphical" routerLinkActive="active">GraphiCal</a>
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

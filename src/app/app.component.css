@@ -18,7 +18,8 @@ h1 {
     background-color: #42545C;
   }
   nav a.active {
-    background-color: black;
+    background-color: #32545C;
+    color: #cccccc
   }
 
   .versionNo {

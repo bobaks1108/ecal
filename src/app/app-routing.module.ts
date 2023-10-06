@@ -9,8 +9,8 @@ import { AddEditEventComponent } from './add-edit-event/add-edit-event.component
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'detail/:id', component: AddEditEventComponent },
-  { path: 'detail', component: AddEditEventComponent },
+  { path: 'add-edit-event/:id', component: AddEditEventComponent },
+  { path: 'add-edit-event', component: AddEditEventComponent },
   { path: 'events', component: EventsComponent }
 ];
 

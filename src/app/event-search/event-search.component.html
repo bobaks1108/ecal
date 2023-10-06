@@ -4,7 +4,7 @@
   
     <ul class="search-result">
       <li *ngFor="let event of events$ | async" >
-        <a routerLink="/detail/{{event.id}}">
+        <a routerLink="/add-edit-event/{{event.id}}">
           {{event.eventName}}
         </a>
       </li>
