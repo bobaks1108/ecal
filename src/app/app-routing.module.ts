@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
-import { EventDetailComponent } from './event-detail/event-detail.component';
 import { AddEditEventComponent } from './add-edit-event/add-edit-event.component';
 
 

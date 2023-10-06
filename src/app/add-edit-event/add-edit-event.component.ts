@@ -22,7 +22,7 @@ export class AddEditEventComponent implements OnInit, AfterViewInit, OnDestroy {
 
   eventForm: UntypedFormGroup = new UntypedFormGroup({});
   private sub: Subscription = new Subscription;
-  pageTitle = 'Event edit';  
+  pageTitle = 'Edit Event:';  
   errorMessage: String = '';
   event: Event | undefined;
 
